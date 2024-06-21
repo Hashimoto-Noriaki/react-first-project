@@ -5,8 +5,6 @@ type Props = {
 };
 
 export const Breadcrumb = ({items}: Props) => {
-  // const { items } = props
-  // const items = ["Home", "Library", "Date"];
   const [selectedValue, setSelectedValue] = useState("");
 
   return (
