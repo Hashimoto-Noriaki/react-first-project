@@ -1,6 +1,7 @@
 import { UserDetail } from "./UserDetail";
 import { Breadcrumb } from "./components/Breadcrumb";
 import { PrimaryButton } from "./components/PrimaryButton";
+import { Like } from "./components/Like";
 
 const App = () => {
   const items1 = ["Home1", "Library1", "Date1"];
@@ -13,6 +14,9 @@ const App = () => {
       <UserDetail />
       <PrimaryButton>button1</PrimaryButton>
       <PrimaryButton>button2</PrimaryButton>
+      <div>
+        <Like />
+      </div>
     </div>
   );
 };
