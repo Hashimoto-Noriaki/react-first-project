@@ -1,11 +1,12 @@
-import { MouseEvent } from "react";
+import { useState } from "react"
 
 export const Breadcrumb = () => {
   const items = ["Home", "Library", "Date"];
+  const [selectedValue, setSelectedValue] = useState("");
 
-  const handleClick = (event: MouseEvent<HTMLAnchorElement>) => {
-      console.log(event);
-  }
+//   const handleClick = (event: MouseEvent<HTMLAnchorElement>) => {
+//       console.log(event);
+//   }
 
   return (
     <>
@@ -19,9 +20,13 @@ export const Breadcrumb = () => {
         <ol className="breadcrumb">
           {items.map((item) => (
             <li key={item} className="breadcrumb-item">
-              <a href="#" onClick={handleClick}>
+               {item === selectedValue ? (
+                <>{item}</>
+              ) : (
+              <a href="#" onClick={() => setSelectedValue(item)}>
                 {item}
               </a>
+              )}
             </li>
           ))}
         </ol>
@@ -29,3 +34,4 @@ export const Breadcrumb = () => {
     </>
   );
 };
+
