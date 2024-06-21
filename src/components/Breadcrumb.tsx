@@ -1,12 +1,13 @@
 import { useState } from "react"
 
-export const Breadcrumb = () => {
-  const items = ["Home", "Library", "Date"];
-  const [selectedValue, setSelectedValue] = useState("");
+type Props = {
+  items:string[];
+};
 
-//   const handleClick = (event: MouseEvent<HTMLAnchorElement>) => {
-//       console.log(event);
-//   }
+export const Breadcrumb = ({items}: Props) => {
+  // const { items } = props
+  // const items = ["Home", "Library", "Date"];
+  const [selectedValue, setSelectedValue] = useState("");
 
   return (
     <>
