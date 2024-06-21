@@ -1,9 +1,19 @@
 import { useState } from "react";
 import styles from "./Breadcrumb.module.css";
+import styled from "styled-components";
 
 type Props = {
   items:string[];
 };
+
+type NoticeParagraphProps = {
+  isBlank: boolean;
+};
+
+const NoticeParagraph = styled.p<NoticeParagraphProps>`
+  font-weight: 100;
+  color: ${(props) => (props.isBlank ? "red" : "gray")};
+`;
 
 export const Breadcrumb = ({items}: Props) => {
   const [selectedValue, setSelectedValue] = useState("");
@@ -12,9 +22,11 @@ export const Breadcrumb = ({items}: Props) => {
     <>
       <p className={styles.listTitle}>パンくずリスト</p>
       {items.length === 0 ? (
-        <p>itemがありません。</p>
+         <NoticeParagraph isBlank>itemがありません。</NoticeParagraph>
       ) : (
-        <p>itemが{items.length}あります</p>
+        <NoticeParagraph isBlank={false}>
+          itemが{items.length}あります
+        </NoticeParagraph>
       )}
       <nav aria-label="breadcrumb">
         <ol className="breadcrumb">
