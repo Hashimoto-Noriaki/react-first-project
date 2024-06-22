@@ -3,7 +3,7 @@ import styles from "./Breadcrumb.module.css";
 import styled from "styled-components";
 
 type Props = {
-  items:string[];
+  items: string[];
 };
 
 type NoticeParagraphProps = {
@@ -15,16 +15,18 @@ const NoticeParagraph = styled.p<NoticeParagraphProps>`
   color: ${(props) => (props.isBlank ? "red" : "gray")};
 `;
 
-export const Breadcrumb = ({items}: Props) => {
+export const Breadcrumb = ({ items }: Props) => {
   const [selectedValue, setSelectedValue] = useState("");
 
   return (
     <>
       <p className={styles.listTitle}>パンくずリスト</p>
       {items.length === 0 ? (
-         <NoticeParagraph isBlank>itemがありません。</NoticeParagraph>
+        <NoticeParagraph isBlank={true} data-is-blank={true}>
+          itemがありません。
+        </NoticeParagraph>
       ) : (
-        <NoticeParagraph isBlank={false}>
+        <NoticeParagraph isBlank={false} data-is-blank={false}>
           itemが{items.length}あります
         </NoticeParagraph>
       )}
@@ -32,12 +34,12 @@ export const Breadcrumb = ({items}: Props) => {
         <ol className="breadcrumb">
           {items.map((item) => (
             <li key={item} className="breadcrumb-item">
-               {item === selectedValue ? (
+              {item === selectedValue ? (
                 <>{item}</>
               ) : (
-              <a href="#" onClick={() => setSelectedValue(item)}>
-                {item}
-              </a>
+                <a href="#" onClick={() => setSelectedValue(item)}>
+                  {item}
+                </a>
               )}
             </li>
           ))}
@@ -46,4 +48,3 @@ export const Breadcrumb = ({items}: Props) => {
     </>
   );
 };
-
