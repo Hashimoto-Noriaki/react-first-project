@@ -11,11 +11,16 @@ type Post = {
 export const PostList = () => {
     const [postList,setPostList] = useState<Post[]>([]);
     const [userId, setUserId] = useState(1);
+    const [errorMessage, setErrorMessage] = useState("");
     useEffect(() =>{
-        axios.get("https://jsonplaceholder.typicode.com/posts").then((res) => {
-            setPostList(res.data as Post[]);
-        });
-        // console.log("PostsList");
+        axios
+            .get<Post[]>("https://jsonplaceholder.typicode.com/posts")
+            .then((res) => {
+                setPostList(res.data);
+            })
+            .catch((e)=> {
+                setErrorMessage(e.message);
+            });
     },[userId]);
 
     return (
@@ -29,6 +34,11 @@ export const PostList = () => {
                     onChange={(e) => setUserId(Number(e.target.value))}
                 />
             </div>
+            {errorMessage !== "" && (
+                <div className="alert alert-danger" role="alert">
+                    {errorMessage}
+                </div>
+            )}
             <table className="table">
                 <thead>
                     <tr>
