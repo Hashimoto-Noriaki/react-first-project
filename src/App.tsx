@@ -3,7 +3,9 @@ import { Breadcrumb } from "./components/Breadcrumb";
 import { PrimaryButton } from "./components/PrimaryButton";
 import { Like } from "./components/Like";
 import { UserList } from "./components/UserList"; 
+import { PostList } from "./components/PostList";
 import { Form } from "./components/Form";
+
 
 const App = () => {
   const items1 = ["Home1", "Library1", "Date1"];
@@ -19,8 +21,9 @@ const App = () => {
       <div>
         <Like />
       </div>
-      <UserList />
       <Form />
+      <UserList />
+      <PostList />
     </div>
   );
 };
